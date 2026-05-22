@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -109,6 +108,7 @@ func StringToArt(input string) string {
 	}
 	return output
 }
-func main() {
-	fmt.Print(StringToArt("12\n2"))
-}
+
+// func main() {
+// 	fmt.Print(StringToArt("12\n2"))
+// }
