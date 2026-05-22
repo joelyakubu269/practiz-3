@@ -298,16 +298,27 @@ func GeneratePattern(c rune) []string {
 	}
 	m := make([]string, 8)
 
-	for i := 0; i < 6; i++ {
-		var res strings.Builder
-		if val, ok := patterns[c]; ok {
-			res.WriteString(val[i])
-			res.WriteString("\n")
+	if val, ok := patterns[c]; ok {
+		for i := 0; i < 8; i++ {
+			m[i] = val[i]
 		}
-		m[i] = res.String()
+
 	}
 	return m
 }
 func main() {
-	fmt.Println(GeneratePattern('A'))
+	fmt.Println(strings.Join(GeneratePattern('A'), "\n")) // newline belongs to output stage not data stage
 }
+
+// ASCII Art Logic:
+// Patterns (map or slice) store raw rows of characters ONLY.
+// Do NOT add '\n' inside patterns or slices.
+//
+// There are 2 stages:
+// 1. DATA stage: build/store []string (no formatting)
+// 2. OUTPUT stage: build final string (add '\n' here)
+//
+// Rule:
+// - []string = structure (rows of art)
+// - string = final rendered output
+// - '\n' belongs ONLY in output stage, not in stored patterns
