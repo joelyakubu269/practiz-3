@@ -8,14 +8,14 @@ func GenerateFont() map[rune][]string {
 	m := make(map[rune][]string)
 
 	for i := 32; i <= 126; i++ {
-		var char []string
+		char := make([]string, 8)
 		r := rune(i)
 		for j := 0; j < 8; j++ {
 			var row string
 			for k := 0; k < 8; k++ {
 				row += string(pixel(r, j, k))
 			}
-			char = append(char, row)
+			char[j] = row
 		}
 		m[r] = char
 	}
@@ -81,3 +81,18 @@ func pixel(r rune, row, col int) rune {
 	}
 	return '.'
 }
+
+// func main() {
+// 	font := GenerateFont()
+
+// 	for r, char := range font {
+
+// 		fmt.Printf("%c\n", r)
+
+// 		for _, line := range char {
+// 			fmt.Println(line)
+// 		}
+
+// 		fmt.Println()
+// 	}
+// }
