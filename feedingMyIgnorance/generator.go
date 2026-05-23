@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
-
 func GeneratePattern(c rune) []string {
 	if c < 'A' || c > 'Z' {
 		return []string{}
@@ -306,9 +301,10 @@ func GeneratePattern(c rune) []string {
 	}
 	return m
 }
-func main() {
-	fmt.Println(strings.Join(GeneratePattern('A'), "\n")) // newline belongs to output stage not data stage
-}
+
+// func main() {
+// 	fmt.Println(strings.Join(GeneratePattern('A'), "\n")) // newline belongs to output stage not data stage
+// }
 
 // ASCII Art Logic:
 // Patterns (map or slice) store raw rows of characters ONLY.
