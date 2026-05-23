@@ -60,3 +60,29 @@ func rowZone(row int) string {
 		return "bottom"
 	}
 }
+func pixel(r rune, row, col int) rune {
+	class := classify(r)
+	zone := rowZone(row)
+
+	switch class {
+	case "space":
+		return ' '
+	case "digit":
+		if row == col || col == 0 || col == 7 {
+			return '*'
+		}
+	case "upper":
+		if zone == "top" || zone == "upper" {
+			return '*'
+		}
+	case "lower":
+		if zone == "lower" || zone == "bottom" {
+			return '*'
+		}
+	case "symbol":
+		if (row+col)%2 == 0 {
+			return '*'
+		}
+	}
+	return '.'
+}
