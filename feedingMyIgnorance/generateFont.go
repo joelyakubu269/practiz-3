@@ -13,12 +13,7 @@ func GenerateFont() map[rune][]string {
 		for j := 0; j < 8; j++ {
 			var row string
 			for k := 0; k < 8; k++ {
-				switch {
-				case r == ' ':
-					row += " "
-				default:
-					row += "*"
-				}
+				row += string(pixel(r, j, k))
 			}
 			char = append(char, row)
 		}
