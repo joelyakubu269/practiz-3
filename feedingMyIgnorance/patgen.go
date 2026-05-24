@@ -272,9 +272,11 @@ func GeneratePattern(c rune) []string {
 		},
 	}
 	//sli := make([]string, 8) // creates a slice and fills it with 8 empty strings
+	if len(m[c]) != 8 {
+		return []string{}
+	}
 	for i := 0; i < 8; i++ {
-		if len(m[c][i]) != 6 || len(m[c]) != 8 {
-			fmt.Errorf("Width of slice is not equal to 6 or length is not equal to 8")
+		if len(m[c][i]) != 6 {
 			return []string{}
 		}
 		//sli[i] = m[c][i]
