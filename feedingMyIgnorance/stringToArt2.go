@@ -101,7 +101,7 @@ func StringToArt(input string) string {
 				result.WriteString(val[i])
 
 			}
-			result.WriteString("\n")
+			result.WriteString("\n") // this helps the output makes sense else everything would be a one line mess
 		}
 
 	}
