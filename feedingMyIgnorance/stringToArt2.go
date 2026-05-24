@@ -89,17 +89,21 @@ func StringToArt(input string) string {
 		},
 	}
 	parts := strings.Split(input, "\n")
-	var result string
+	var result strings.Builder
 	for _, r := range parts {
 		for i := 0; i < 5; i++ {
 
 			for _, c := range r {
-				result += m[c][i]
+				val, ok := m[c]
+				if !ok {
+					return ""
+				}
+				result.WriteString(val[i])
 
 			}
-			result += "\n"
+			result.WriteString("\n")
 		}
 
 	}
-	return result
+	return result.String()
 }
