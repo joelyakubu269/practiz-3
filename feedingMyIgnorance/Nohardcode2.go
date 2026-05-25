@@ -40,6 +40,8 @@ func isVowel(r rune) bool {
 
 func pixel(r rune, rows, cols int) rune {
 	switch classify(r) {
+	case "space":
+		return ' '
 	case "upper":
 		if rows == 0 || rows == 7 || cols == 0 || cols == 7 {
 			return '*'
@@ -84,6 +86,14 @@ func pixel(r rune, rows, cols int) rune {
 			return '*'
 		}
 		return '.'
-
+	case "symbol":
+		if rows == 0 || rows == 7 || cols == 0 || cols == 7 {
+			return '*'
+		}
+		if (rows+cols+int(r))%3 == 0 {
+			return '*'
+		}
+		return '*'
 	}
+	return '.'
 }
