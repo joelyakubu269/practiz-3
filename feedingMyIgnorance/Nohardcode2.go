@@ -15,3 +15,12 @@ func GenerateFont() map[rune][]string {
 		}
 	}
 }
+func isAscender(r rune) bool {
+	return strings.ContainsRune("bdfhklt", r)
+}
+func isDescender(r rune) bool {
+	return strings.ContainsRune("gjpqy", r)
+}
+func isVowel(r rune) bool {
+	return strings.ContainsRune("AEIOUaeiou", r)
+}

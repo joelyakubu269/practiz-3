@@ -108,7 +108,7 @@ func pixel(r rune, row, col int) rune {
 			return '*'
 		}
 
-		if (row == top || row == bottom) && col >= 2 && col <= 5 {
+		if (row == top || row == bottom) && col >= 2 && col <= 5 { // main body shape draws in the middle
 			return '*'
 		}
 
