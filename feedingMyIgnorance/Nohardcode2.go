@@ -53,7 +53,7 @@ func pixel(r rune, rows, cols int) rune {
 		if (rows == cols) || (rows+cols == 7) {
 			return '*'
 		}
-		return '*'
+		return '.'
 	case "lower":
 		top := 2
 		bottom := 6
@@ -74,6 +74,16 @@ func pixel(r rune, rows, cols int) rune {
 		}
 		return '.'
 	case "digit":
+		if rows == 0 || rows == 7 {
+			return '*'
+		}
+		if cols == 3 { // to give it a vertical spine
+			return '*'
+		}
+		if (rows+cols)%4 == 0 { // for uniqueness
+			return '*'
+		}
+		return '.'
 
 	}
 }
