@@ -15,6 +15,19 @@ func GenerateFont() map[rune][]string {
 		}
 	}
 }
+func classify(r rune) string {
+	switch {
+	case r >= 'A' && r <= 'Z':
+		return "upper"
+	case r >= 'a' && r <= 'z':
+		return "lower"
+	case r == ' ':
+		return "space"
+	case r >= '0' && r <= '9':
+	default:
+		return "symbol"
+	}
+}
 func isAscender(r rune) bool {
 	return strings.ContainsRune("bdfhklt", r)
 }
@@ -23,4 +36,44 @@ func isDescender(r rune) bool {
 }
 func isVowel(r rune) bool {
 	return strings.ContainsRune("AEIOUaeiou", r)
+}
+
+func pixel(r rune, rows, cols int) rune {
+	switch classify(r) {
+	case "upper":
+		if rows == 0 || rows == 7 || cols == 0 || cols == 7 {
+			return '*'
+		}
+		if cols == 2 || cols == 5 {
+			return '*'
+		}
+		if rows == 3 {
+			return '*'
+		}
+		if (rows == cols) || (rows+cols == 7) {
+			return '*'
+		}
+		return '*'
+	case "lower":
+		top := 2
+		bottom := 6
+		if isAscender(r) {
+			top = 1
+		}
+		if isDescender(r) {
+			bottom = 7
+		}
+		if cols == 3 {
+			return '*'
+		}
+		if (rows == top || rows == bottom) && cols >= 2 && cols <= 5 {
+			return '*'
+		}
+		if isVowel(r) && (rows == top || rows == bottom) {
+			return '*'
+		}
+		return '.'
+	case "digit":
+
+	}
 }
